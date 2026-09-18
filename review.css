@@ -1,0 +1,17 @@
+.session-card { padding: 0; overflow: hidden; }
+.session-card img { display: block; width: 100%; max-height: 320px; object-fit: cover; }
+.session-body { padding: 22px 24px 26px; }
+.session-body p { white-space: pre-wrap; margin: 0; }
+
+/* star rating: DOM order is 5→1, row-reverse shows 1→5, so "~" lights up stars to the left */
+.stars { display: flex; flex-direction: row-reverse; justify-content: flex-end; gap: 6px; margin: 14px 0 4px; }
+.stars input { position: absolute; opacity: 0; pointer-events: none; }
+.stars label { font-size: 2.8rem; line-height: 1; color: #2b3a66; cursor: pointer; transition: color .12s, transform .12s; }
+.stars label:hover, .stars label:hover ~ label,
+.stars input:checked ~ label { color: var(--star); }
+.stars label:active { transform: scale(1.15); }
+.stars input:focus-visible + label { outline: 2px solid var(--accent-2); border-radius: 6px; }
+.small-note { font-size: .82rem; margin: 0 0 6px; }
+
+.thanks { text-align: center; padding: 40px 24px; }
+.thanks .big { font-size: 3rem; }

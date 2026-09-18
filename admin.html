@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin – Session Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><span class="brand-dot"></span>Tech-o-nicks Admin</div>
+    <div class="nav-right">
+      <span class="pill">Powered by CGEC</span>
+      <button id="logout" class="btn ghost small" hidden>Log out</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- LOGIN -->
+    <section id="login-view" class="card login-card" hidden>
+      <h1>Admin login</h1>
+      <form id="login-form">
+        <label class="field" for="password">Password</label>
+        <input type="password" id="password" required autocomplete="current-password">
+        <p id="login-error" class="error" role="alert"></p>
+        <button class="btn" type="submit">Log in</button>
+      </form>
+    </section>
+
+    <!-- DASHBOARD -->
+    <div id="dash-view" hidden>
+      <section class="card">
+        <h1>Create a <span class="gradient-text">session</span></h1>
+        <form id="session-form">
+          <label class="field" for="name">Session name</label>
+          <input type="text" id="name" maxlength="120" required>
+
+          <label class="field" for="description">Description</label>
+          <textarea id="description" maxlength="2000" required></textarea>
+
+          <label class="field" for="image">Session image</label>
+          <input type="file" id="image" accept="image/png,image/jpeg,image/webp,image/gif" required>
+          <img id="preview" class="preview" alt="" hidden>
+
+          <p id="create-error" class="error" role="alert"></p>
+          <button class="btn" id="create-btn" type="submit">Create session &amp; generate QR</button>
+        </form>
+      </section>
+
+      <section>
+        <h2>Your sessions</h2>
+        <div id="sessions" class="sessions"></div>
+        <p id="empty" class="muted" hidden>No sessions yet. Create one above.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- QR dialog -->
+  <dialog id="qr-dialog">
+    <h2 id="qr-title">Session QR code</h2>
+    <img id="qr-img" alt="QR code for the review page">
+    <a id="qr-link" class="link" target="_blank" rel="noopener"></a>
+    <div class="row">
+      <a id="qr-download" class="btn small" download="session-qr.png">Download QR</a>
+      <button id="qr-copy" class="btn ghost small" type="button">Copy link</button>
+      <button class="btn ghost small close" type="button">Close</button>
+    </div>
+  </dialog>
+
+  <!-- Reviews dialog -->
+  <dialog id="reviews-dialog" class="wide">
+    <div class="row between">
+      <h2 id="rv-title">Reviews</h2>
+      <button class="btn ghost small close" type="button">Close</button>
+    </div>
+    <p id="rv-summary" class="muted"></p>
+    <div id="rv-list" class="rv-list"></div>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

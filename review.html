@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rate this session</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="review.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><span class="brand-dot"></span>Tech-o-nicks</div>
+    <span class="pill">Powered by CGEC</span>
+  </header>
+
+  <main class="wrap narrow">
+    <p id="state" class="card muted">Loading session…</p>
+
+    <article id="session" class="card session-card" hidden>
+      <img id="s-image" alt="">
+      <div class="session-body">
+        <h1 id="s-name"></h1>
+        <p id="s-desc" class="muted"></p>
+      </div>
+    </article>
+
+    <form id="review-form" class="card" hidden novalidate>
+      <h2>How was this session?</h2>
+
+      <div class="stars" id="stars" role="radiogroup" aria-label="Rating from 1 to 5 stars">
+        <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">★</label>
+        <input type="radio" name="rating" id="star4" value="4"><label for="star4" title="4 stars">★</label>
+        <input type="radio" name="rating" id="star3" value="3"><label for="star3" title="3 stars">★</label>
+        <input type="radio" name="rating" id="star2" value="2"><label for="star2" title="2 stars">★</label>
+        <input type="radio" name="rating" id="star1" value="1"><label for="star1" title="1 star">★</label>
+      </div>
+      <p class="muted small-note">Rating is required.</p>
+
+      <label class="field" for="comment">Write a review <span class="optional">(optional)</span></label>
+      <textarea id="comment" maxlength="1000" placeholder="What did you like? What could be better?"></textarea>
+
+      <p id="error" class="error" role="alert"></p>
+      <button class="btn" id="submit" type="submit">Submit review</button>
+    </form>
+
+    <div id="thanks" class="card thanks" hidden>
+      <div class="big">🎉</div>
+      <h2>Thanks for your feedback!</h2>
+      <p class="muted">Your review has been submitted.</p>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="review.js"></script>
+</body>
+</html>
