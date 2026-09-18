@@ -15,3 +15,8 @@
 
 .thanks { text-align: center; padding: 40px 24px; }
 .thanks .big { font-size: 3rem; }
+
+.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.details-grid label.field { margin-top: 10px; }
+.section-gap { margin-top: 28px; }
+@media (max-width: 520px) { .details-grid { grid-template-columns: 1fr; } }

@@ -15,6 +15,7 @@ function el(tag, attrs = {}, ...children) {
 }
 const stars = n => '★'.repeat(Math.round(n)) + '☆'.repeat(5 - Math.round(n));
 const fmtDate = iso => new Date(iso).toLocaleString();
+const yearLabel = y => ({ 1: '1st', 2: '2nd', 3: '3rd', 4: '4th' }[y] || y) + ' year';
 
 async function api(url, opts = {}) {
   const res = await fetch(API + url, { ...opts, headers: { ...(opts.headers || {}), 'x-admin-token': token || '' } });
@@ -148,10 +149,18 @@ async function showReviews(id) {
       : 'No reviews yet.';
     const list = $('#rv-list');
     list.replaceChildren();
-    d.reviews.forEach(r => list.append(el('div', { class: 'rv' },
-      el('div', {}, el('span', { class: 'stars-display' }, stars(r.rating)), el('time', {}, fmtDate(r.createdAt))),
-      r.comment ? el('p', {}, r.comment) : el('p', { class: 'muted' }, 'No written review')
-    )));
+    d.reviews.forEach(r => {
+      const meta = [r.department, r.year ? yearLabel(r.year) : '', r.rollNo ? `Roll no. ${r.rollNo}` : ''].filter(Boolean).join(', ');
+      list.append(el('div', { class: 'rv' },
+        el('div', { class: 'rv-head' },
+          r.name ? el('strong', {}, r.name) : el('strong', { class: 'muted' }, 'Name not recorded'),
+          el('time', {}, fmtDate(r.createdAt))
+        ),
+        meta ? el('div', { class: 'rv-meta' }, meta) : '',
+        el('div', {}, el('span', { class: 'stars-display' }, stars(r.rating))),
+        r.comment ? el('p', {}, r.comment) : el('p', { class: 'muted' }, 'No written review')
+      ));
+    });
     $('#reviews-dialog').showModal();
   } catch (err) { alert(err.message); }
 }

@@ -29,6 +29,16 @@ $('review-form').addEventListener('submit', async e => {
   const error = $('error');
   error.textContent = '';
 
+  const name = $('name').value.trim();
+  const rollNo = $('roll').value.trim();
+  const department = $('dept').value.trim();
+  const year = $('year').value;
+
+  if (!name || !rollNo || !department || !year) {   // reviewer details are compulsory
+    error.textContent = 'Please fill in your name, roll number, department and year.';
+    return;
+  }
+
   if (!checked) {                       // rating is compulsory
     error.textContent = 'Please choose a star rating before submitting.';
     return;
@@ -39,7 +49,7 @@ $('review-form').addEventListener('submit', async e => {
     const res = await fetch(`${API}/api/public/sessions/${encodeURIComponent(sessionId)}/reviews`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rating: Number(checked.value), comment: $('comment').value }) // comment may be empty
+      body: JSON.stringify({ name, rollNo, department, year: Number(year), rating: Number(checked.value), comment: $('comment').value }) // comment may be empty
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Could not submit review');

@@ -25,3 +25,7 @@ dialog::backdrop { background: rgba(3,6,14,.75); }
 .rv { border: 1px solid var(--border); border-radius: 12px; padding: 14px; background: var(--bg-2); }
 .rv p { margin: 6px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
 .rv time { font-size: .8rem; color: var(--muted); margin-left: 8px; }
+
+.rv-head { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: baseline; }
+.rv-head time { margin-left: 0; }
+.rv-meta { color: var(--muted); font-size: .88rem; margin: 2px 0 6px; }

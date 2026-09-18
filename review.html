@@ -25,7 +25,37 @@
     </article>
 
     <form id="review-form" class="card" hidden novalidate>
-      <h2>How was this session?</h2>
+      <h2>Your details</h2>
+      <div class="details-grid">
+        <div>
+          <label class="field" for="name">Full name</label>
+          <input type="text" id="name" maxlength="80" autocomplete="name" required>
+        </div>
+        <div>
+          <label class="field" for="roll">Roll number</label>
+          <input type="text" id="roll" maxlength="30" autocapitalize="characters" required>
+        </div>
+        <div>
+          <label class="field" for="dept">Department</label>
+          <input type="text" id="dept" list="dept-list" maxlength="50" placeholder="e.g. CSE" required>
+          <datalist id="dept-list">
+            <option value="CSE"><option value="IT"><option value="ECE">
+            <option value="EE"><option value="ME"><option value="CE">
+          </datalist>
+        </div>
+        <div>
+          <label class="field" for="year">Year</label>
+          <select id="year" required>
+            <option value="">Select year</option>
+            <option value="1">1st year</option>
+            <option value="2">2nd year</option>
+            <option value="3">3rd year</option>
+            <option value="4">4th year</option>
+          </select>
+        </div>
+      </div>
+
+      <h2 class="section-gap">How was this session?</h2>
 
       <div class="stars" id="stars" role="radiogroup" aria-label="Rating from 1 to 5 stars">
         <input type="radio" name="rating" id="star5" value="5"><label for="star5" title="5 stars">★</label>

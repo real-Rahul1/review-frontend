@@ -44,12 +44,12 @@ h2 { font-size: 1.25rem; }
 
 label.field { display: block; font-weight: 600; margin: 14px 0 6px; }
 .optional { font-weight: 400; color: var(--muted); font-size: .85rem; }
-input[type=text], input[type=password], textarea, input[type=file] {
+input[type=text], input[type=password], textarea, input[type=file], select {
   width: 100%; padding: 12px 14px; color: var(--text); background: var(--bg-2);
   border: 1px solid var(--border); border-radius: 12px; font: inherit;
 }
 textarea { min-height: 110px; resize: vertical; }
-input:focus, textarea:focus, button:focus-visible, a:focus-visible {
+input:focus, textarea:focus, select:focus, button:focus-visible, a:focus-visible {
   outline: 2px solid var(--accent-2); outline-offset: 2px; border-color: transparent;
 }
 
